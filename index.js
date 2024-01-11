@@ -20,7 +20,7 @@ let rooms = [{
     bookings: []
 }]
 
-app.get('/', (req, res) => {
+app.get('/', ( res) => {
     try {
         res.status(200).send('<h1>Welcome to hall booking</h1>' + JSON.stringify(rooms))
     }
@@ -85,7 +85,7 @@ app.post('/Bookings', (req, res) => {
 })
 
 //---------------list all rooms with Booked Data---------------//
-app.get('/rooms/Bookings', (req, res) => {
+app.get('/rooms/Bookings', (res) => {
     try {
         const roomsWithBookings = rooms.map(room => {
             const bookedData = room.bookings.map(booking => ({
@@ -113,7 +113,7 @@ app.get('/rooms/Bookings', (req, res) => {
 });
 
 // -----------------list all Rooms with Booked Data ----------------- //
-app.get('/customers/Bookings', (req, res) => {
+app.get('/customers/Bookings', (res) => {
     try {
         const customersWithBoookings = bookings.map(booking => ({
             customerName: booking.customerName,
