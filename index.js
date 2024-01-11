@@ -20,14 +20,15 @@ let rooms = [{
     bookings: []
 }]
 
-app.get('/', ( res) => {
+app.get('/', (req, res) => {
     try {
         res.status(200).send('<h1>Welcome to hall booking</h1>' + JSON.stringify(rooms))
     }
     catch (error) {
         res.status(400).send({
             message: 'internet connection error',
-            error: error.message
+            error: error.message,
+            req
         })
     }
 })
@@ -85,7 +86,7 @@ app.post('/Bookings', (req, res) => {
 })
 
 //---------------list all rooms with Booked Data---------------//
-app.get('/rooms/Bookings', (res) => {
+app.get('/rooms/Bookings', (req, res) => {
     try {
         const roomsWithBookings = rooms.map(room => {
             const bookedData = room.bookings.map(booking => ({
@@ -103,17 +104,17 @@ app.get('/rooms/Bookings', (res) => {
         });
         res.json(roomsWithBookings);
         console.log(roomsWithBookings);
-
     }
     catch (error) {
         res.status(200).send({
-            error: error.message
+            error: error.message,
+            req
         })
     }
 });
 
 // -----------------list all Rooms with Booked Data ----------------- //
-app.get('/customers/Bookings', (res) => {
+app.get('/customers/Bookings', (req, res) => {
     try {
         const customersWithBoookings = bookings.map(booking => ({
             customerName: booking.customerName,
@@ -125,7 +126,8 @@ app.get('/customers/Bookings', (res) => {
         res.json(customersWithBoookings)
     } catch (error) {
         res.status(200).send({
-            error: error.message
+            error: error.message,
+            req
         })
     }
 })
