@@ -22,7 +22,7 @@ let rooms = [{
 
 app.get('/', (req, res) => {
     try {
-        res.status(200).send('<h1>Welcome to hall booking</h1>' + JSON.stringify(rooms))
+        res.status(200).send('<h1>Welcome to hall booking</h1>')
     }
     catch (error) {
         res.status(400).send({
