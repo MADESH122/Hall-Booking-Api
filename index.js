@@ -28,8 +28,7 @@ app.get('/', (req, res) => {
         res.status(400).send({
             message: 'internet connection error',
             error: error.message,
-            req
-        })
+         })
     }
 })
 
@@ -108,8 +107,7 @@ app.get('/rooms/Bookings', (req, res) => {
     catch (error) {
         res.status(200).send({
             error: error.message,
-            req
-        })
+         })
     }
 });
 
@@ -127,8 +125,7 @@ app.get('/customers/Bookings', (req, res) => {
     } catch (error) {
         res.status(200).send({
             error: error.message,
-            req
-        })
+         })
     }
 })
 
